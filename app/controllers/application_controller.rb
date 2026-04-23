@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope)
     new_user_session_path
   end
+
+  def not_authenticated
+    redirect_to user_session_path, danger: t('defaults.flash_message.require_login')
+  end
 end

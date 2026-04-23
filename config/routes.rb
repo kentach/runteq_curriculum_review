@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
-  resources :posts
+  resources :boards, only: %i[index]
+
 end
