@@ -1,61 +1,48 @@
 ja:
-  devise:
-    sessions:
-      signed_in: ログインしました
-      signed_out: ログアウトしました
-      already_signed_out: すでにログアウトしています
-      invalid: メールアドレスまたはパスワードが正しくありません
-
-    registrations:
-      signed_up: ユーザー登録が完了しました
-      updated: 更新しました
-      destroyed: アカウントを削除しました
-      signed_up_but_unconfirmed: メール認証が必要です
-      signed_up_but_inactive: アカウントは有効化されていません
-      signed_up_but_locked: アカウントはロックされています
-
-    passwords:
-      send_instructions: パスワード再設定の案内を送信しました
-      updated: パスワードを変更しました
-      updated_not_active: パスワードは変更されましたがアカウントは未有効です
-      no_token: 無効なリンクです
-
-    confirmations:
-      send_instructions: 確認メールを送信しました
-      confirmed: アカウントが確認されました
-      send_paranoid_instructions: メールアドレスが登録済みなら案内を送信しています
-
-    unlocks:
-      send_instructions: ロック解除メールを送信しました
-      unlocked: アカウントのロックが解除されました
-      send_paranoid_instructions: メールアドレスが登録済みなら案内を送信しています
-
-    failure:
-      already_authenticated: すでにログインしています
-      unauthenticated: ログインしてください
-      unconfirmed: メール認証が必要です
-      locked: アカウントはロックされています
-      invalid: メールアドレスまたはパスワードが正しくありません
-      not_found_in_database: メールアドレスまたはパスワードが正しくありません
-      timeout: セッションの有効期限が切れました。再度ログインしてください
-      inactive: アカウントは有効化されていません
-      last_attempt: 最後の試行です
-      too_many_requests: 試行回数が多すぎます。しばらくしてから再度お試しください
-
-  errors:
-    messages:
-      already_confirmed: すでに確認済みです
-      confirmation_period_expired: 確認期限が切れました。再度リクエストしてください
-      expired: 有効期限が切れました。再度リクエストしてください
-      not_found: 見つかりませんでした
-      not_locked: ロックされていません
+  helpers:
+    submit:
+      create: 登録
+      submit: 保存
+      update: 更新
+    label:
+      email: メールアドレス
+      password: パスワード
+  defaults:
+    post: 投稿
+    flash_message:
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成出来ませんでした"
+      require_login: ログインしてください
+  header:
+    login: ログイン
+    logout: ログアウト
+    board: 掲示板
+    board_index: 掲示板一覧
+    create_board: 掲示板作成
+    bookmark_index: ブックマーク一覧
+    profile: プロフィール
+  user_sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      to_register_page: 登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+    create:
+      success: ログインしました
+      failure: ログインに失敗しました
+    destroy:
+      success: ログアウトしました
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+    create:
+      success: ユーザー登録が完了しました
+      failure: ユーザー登録に失敗しました
   boards:
-    index:
-      title: 掲示板一覧
     new:
       title: 掲示板作成
     show:
       title: 掲示板詳細
-    create:
-      success: 掲示板を作成しました
-      failure: 掲示板の作成に失敗しました
+    index:
+      title: 掲示板一覧

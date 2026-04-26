@@ -5,9 +5,18 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :boards, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
-    def full_name
-      "#{last_name} #{first_name}"
-    end
+  def full_name
+    "#{last_name} #{first_name}"
+  end
+
+  def own?(object)
+    id == object&.user_id
+  end
+
+
+
+
 
 end
