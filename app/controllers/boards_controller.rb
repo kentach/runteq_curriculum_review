@@ -1,4 +1,6 @@
 class BoardsController < ApplicationController
+  before_action :set_board, only: %i[edit update destroy]
+
   def index
     @boards = Board.includes(:user)
   end
@@ -9,9 +11,9 @@ class BoardsController < ApplicationController
   def create
     @board = current_user.boards.build(board_params)
     if @board.save
-      redirect_to boards_path, success: t('boards.create.success')
+      redirect_to boards_path, success: t('defaults.flash_message.created', item: Board.model_name.human)
     else
-      flash.now[:alert] = t('boards.create.failure')
+      flash.now[:alert] = t('defaults.flash_message.not_created', item: Board.model_name.human)
       render :new, status: :unprocessable_entity
     end
   end
@@ -22,7 +24,27 @@ class BoardsController < ApplicationController
     @comments = @board.comments.includes(:user).order(created_at: :desc)
   end
 
+  def edit; end
+
+  def update
+    if @board.update(board_params)
+      redirect_to board_path(@board), notice: t('defaults.flash_message.updated', item: Board.model_name.human)
+    else
+      flash.now[:alert] = t('defaults.flash_message.not_updated', item: Board.model_name.human)
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @board.destroy!
+    redirect_to boards_path, notice: t('defaults.flash_message.deleted', item: Board.model_name.human), status: :see_other
+  end
+
   private
+
+  def set_board
+    @board = current_user.boards.find(params[:id])
+  end
 
   def board_params
     params.require(:board).permit(:title, :body, :board_image, :board_image_cache)
