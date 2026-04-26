@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_04_22_133437) do
+ActiveRecord::Schema[7.2].define(version: 2026_04_26_061741) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_22_133437) do
     t.string "title", null: false
     t.text "body", null: false
     t.bigint "user_id", null: false
+    t.string "board_image"
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
